@@ -38,7 +38,7 @@ const LoginScreen = () => {
 
     return (
         <FormContainer>
-            {/* <h2>Sign In</h2> */}
+            <h2>Log In</h2>
 
             <Form className='mt-4' onSubmit={submitHandler}>
                 <Form.Group controlId='email' className='my-3'>
@@ -52,7 +52,7 @@ const LoginScreen = () => {
                 </Form.Group>
 
                 <Button type='submit' variant='primary' className='mt-2' disabled={ isLoading }>
-                    Log In
+                    Enter
                 </Button>
 
                 { isLoading && <Loader /> }
