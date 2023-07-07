@@ -92,7 +92,7 @@ const OrderScreen = () => {
         <Message variant='danger' />
     ) : (
         <>
-            <h2>Order ID: {order._id}</h2>
+            <h3>Order ID: {order._id}</h3>
             
             <Row>
                 <Col md={8}>
