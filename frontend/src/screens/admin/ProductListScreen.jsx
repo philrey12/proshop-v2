@@ -1,14 +1,14 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Row, Col } from 'react-bootstrap'
-import { FaPlus, FaTimes, FaEdit, FaTrash } from 'react-icons/fa'
+import { FaPlus, FaEdit, FaTrash } from 'react-icons/fa'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { toast } from 'react-toastify'
 import { useGetProductsQuery, useAddNewProductMutation } from '../../slices/productsApiSlice'
 
 const ProductListScreen = () => {
-    const { data: products, isLoading, error, refetch } = useGetProductsQuery()
+    const { data: products, isLoading, refetch, error } = useGetProductsQuery()
     const [addNewProduct, { isLoading: loadingAddNewProduct }] = useAddNewProductMutation()
     const deleteProductHandler = (id) => {
         console.log('delete', id)

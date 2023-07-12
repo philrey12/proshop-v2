@@ -20,13 +20,14 @@ const ProfileScreen = () => {
     const { userInfo } = useSelector((state) => state.auth)
     const submitHandler = async (e) => {
         e.preventDefault()
+        
         if (password !== confirmPassword) {
             toast.error('Password do not match')
         } else {
             try {
                 const res = await updateProfile({ _id: userInfo._id, name, email, password }).unwrap()
                 dispatch(setCredentials(res))
-                toast.success('Profile updated successfully')
+                toast.success('User profile updated')
             } catch (err) {
                 toast.error(err?.data?.message || err.error)
             }
