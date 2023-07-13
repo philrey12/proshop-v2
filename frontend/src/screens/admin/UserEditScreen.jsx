@@ -72,7 +72,7 @@ const UserEditScreen = () => {
                         </Form.Group>
 
                         <Form.Group controlId='email' className='mb-3'>
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label>Email Address</Form.Label>
                             <Form.Control 
                                 type='email' 
                                 placeholder='Enter email' 
