@@ -15,8 +15,8 @@ const ProductListScreen = () => {
     const { data: products, isLoading, refetch, error } = useGetProductsQuery()
     const [addNewProduct, { isLoading: loadingAddNewProduct }] = useAddNewProductMutation()
     const [deleteProduct, { isLoading: loadingDelete }] = useDeleteProductMutation()
-    const deleteProductHandler = async (id) => {
-        if (window.confirm('Delete this product?')) {
+    const deleteProductHandler = async (id, name) => {
+        if (window.confirm(`Delete ${name}?`)) {
             try {
                 await deleteProduct(id)
                 toast.success('Product deleted')
@@ -90,7 +90,7 @@ const ProductListScreen = () => {
                                             className='btn-sm' 
                                             title='Delete' 
                                             style={{color: 'red'}}
-                                            onClick={() => deleteProductHandler(product._id)}
+                                            onClick={() => deleteProductHandler(product._id, product.name)}
                                         ><FaTrash /></Button>
                                     </td>
                                 </tr>
