@@ -5,16 +5,29 @@ import { FaPlus, FaEdit, FaTrash } from 'react-icons/fa'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { toast } from 'react-toastify'
-import { useGetProductsQuery, useAddNewProductMutation } from '../../slices/productsApiSlice'
+import { 
+    useGetProductsQuery, 
+    useAddNewProductMutation, 
+    useDeleteProductMutation 
+} from '../../slices/productsApiSlice'
 
 const ProductListScreen = () => {
     const { data: products, isLoading, refetch, error } = useGetProductsQuery()
     const [addNewProduct, { isLoading: loadingAddNewProduct }] = useAddNewProductMutation()
-    const deleteProductHandler = (id) => {
-        console.log('delete', id)
+    const [deleteProduct, { isLoading: loadingDelete }] = useDeleteProductMutation()
+    const deleteProductHandler = async (id) => {
+        if (window.confirm('Delete this product?')) {
+            try {
+                await deleteProduct(id)
+                toast.success('Product deleted')
+                refetch()
+            } catch (err) {
+                toast.error(err?.data?.message || err.error)
+            }
+        }
     }
     const addNewProductHandler = async () => {
-        if (window.confirm('Add new product?')) {
+        if (window.confirm('Add test product?')) {
             try {
                 await addNewProduct()
                 refetch()
@@ -38,6 +51,7 @@ const ProductListScreen = () => {
             </Row>
 
             {loadingAddNewProduct && <Loader />}
+            {loadingDelete && <Loader />}
 
             {isLoading ? (
                 <Loader />
