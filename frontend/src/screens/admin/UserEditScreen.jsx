@@ -81,7 +81,7 @@ const UserEditScreen = () => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='isAdmin' className='mb-3'>
+                        <Form.Group controlId='isAdmin' className='mb-2'>
                             <Form.Check 
                                 type='checkbox' 
                                 label='Admin' 
