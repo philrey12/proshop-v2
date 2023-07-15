@@ -56,7 +56,7 @@ const ProductScreen = () => {
                 <FaArrowLeft /> Back
             </Link>
 
-            { isLoading ? (
+            {isLoading ? (
                 <Loader />
             ) : error ? (
                 <Message variant='danger'>
