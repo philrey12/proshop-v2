@@ -8,6 +8,7 @@ import Loader from '../components/Loader'
 import { useRegisterMutation } from '../slices/usersApiSlice'
 import { setCredentials } from '../slices/authSlice'
 import { toast } from 'react-toastify'
+import Meta from '../components/Meta'
 
 const RegisterScreen = () => {
     const [name, setName] = useState('')
@@ -44,44 +45,48 @@ const RegisterScreen = () => {
     }, [navigate, redirect, userInfo])
 
     return (
-        <FormContainer>
-            <h2>Register</h2>
+        <>
+            <Meta title='Register - ProShop v2' />
 
-            <Form className='mt-4' onSubmit={submitHandler}>
-                <Form.Group controlId='name' className='my-3'>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type='text' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}></Form.Control>
-                </Form.Group>
-                
-                <Form.Group controlId='email' className='my-3'>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
-                </Form.Group>
+            <FormContainer>
+                <h2>Register</h2>
 
-                <Form.Group controlId='password' className='my-3'>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
-                </Form.Group>
+                <Form className='mt-4' onSubmit={submitHandler}>
+                    <Form.Group controlId='name' className='my-3'>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type='text' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}></Form.Control>
+                    </Form.Group>
+                    
+                    <Form.Group controlId='email' className='my-3'>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
+                    </Form.Group>
 
-                <Form.Group controlId='confirmPassword' className='my-3'>
-                    <Form.Label>Confirm password</Form.Label>
-                    <Form.Control type='password' placeholder='Re-enter password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
-                </Form.Group>
+                    <Form.Group controlId='password' className='my-3'>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
+                    </Form.Group>
 
-                <Button type='submit' variant='primary' className='mt-2' disabled={ isLoading }>
-                    Submit
-                </Button>
+                    <Form.Group controlId='confirmPassword' className='my-3'>
+                        <Form.Label>Confirm password</Form.Label>
+                        <Form.Control type='password' placeholder='Re-enter password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
+                    </Form.Group>
 
-                { isLoading && <Loader /> }
-            </Form>
+                    <Button type='submit' variant='primary' className='mt-2' disabled={ isLoading }>
+                        Submit
+                    </Button>
 
-            <Row className='py-3'>
-                <Col>
-                    Already have an account?{' '}
-                    <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Log In</Link>
-                </Col>
-            </Row>
-        </FormContainer>
+                    { isLoading && <Loader /> }
+                </Form>
+
+                <Row className='py-3'>
+                    <Col>
+                        Already have an account?{' '}
+                        <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Log In</Link>
+                    </Col>
+                </Row>
+            </FormContainer>
+        </>
     )
 }
 

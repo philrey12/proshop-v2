@@ -7,6 +7,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import Paginate from '../../components/Paginate'
 import { toast } from 'react-toastify'
+import Meta from '../../components/Meta'
 import { 
     useGetProductsQuery, 
     useAddNewProductMutation, 
@@ -42,6 +43,8 @@ const ProductListScreen = () => {
 
     return (
         <>
+            <Meta title='Manage Products' />
+
             <Row className='align-items-center mb-2'>
                 <Col>
                     <h3>Products</h3>

@@ -8,6 +8,7 @@ import Loader from '../components/Loader'
 import { useLoginMutation } from '../slices/usersApiSlice'
 import { setCredentials } from '../slices/authSlice'
 import { toast } from 'react-toastify'
+import Meta from '../components/Meta'
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -37,34 +38,38 @@ const LoginScreen = () => {
     }, [navigate, redirect, userInfo])
 
     return (
-        <FormContainer>
-            <h2>Log In</h2>
+        <>
+            <Meta title='Log In - ProShop v2' />
 
-            <Form className='mt-4' onSubmit={submitHandler}>
-                <Form.Group controlId='email' className='my-3'>
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
-                </Form.Group>
+            <FormContainer>
+                <h2>Log In</h2>
 
-                <Form.Group controlId='password' className='my-3'>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
-                </Form.Group>
+                <Form className='mt-4' onSubmit={submitHandler}>
+                    <Form.Group controlId='email' className='my-3'>
+                        <Form.Label>Email Address</Form.Label>
+                        <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
+                    </Form.Group>
 
-                <Button type='submit' variant='primary' className='mt-2' disabled={ isLoading }>
-                    Enter
-                </Button>
+                    <Form.Group controlId='password' className='my-3'>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
+                    </Form.Group>
 
-                { isLoading && <Loader /> }
-            </Form>
+                    <Button type='submit' variant='primary' className='mt-2' disabled={ isLoading }>
+                        Enter
+                    </Button>
 
-            <Row className='py-3'>
-                <Col>
-                    New customer?{' '}
-                    <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
-                </Col>
-            </Row>
-        </FormContainer>
+                    { isLoading && <Loader /> }
+                </Form>
+
+                <Row className='py-3'>
+                    <Col>
+                        New customer?{' '}
+                        <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
+                    </Col>
+                </Row>
+            </FormContainer>
+        </>
     )
 }
 

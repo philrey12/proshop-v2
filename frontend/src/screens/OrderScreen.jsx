@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 import { useGetOrderDetailsQuery, usePayOrderMutation, useGetPayPalClientIdQuery, useDeliverOrderMutation } from '../slices/ordersApiSlice'
 
 const OrderScreen = () => {
@@ -102,6 +103,8 @@ const OrderScreen = () => {
         <Message variant='danger' />
     ) : (
         <>
+            <Meta title='Orders' />
+
             <h3>Order ID: {order._id}</h3>
             
             <Row>

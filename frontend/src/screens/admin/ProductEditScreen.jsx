@@ -7,6 +7,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import FormContainer from '../../components/FormContainer'
 import { toast } from 'react-toastify'
+import Meta from '../../components/Meta'
 import { 
     useGetProductDetailsQuery, 
     useUpdateProductMutation, 
@@ -77,6 +78,8 @@ const ProductEditScreen = () => {
 
     return (
         <>
+            <Meta title={`Edit - ${name}`} />
+
             <Link className='btn btn-light my-3' to='/admin/productlist'>
                 <FaArrowLeft /> Back
             </Link>

@@ -7,6 +7,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import FormContainer from '../../components/FormContainer'
 import { toast } from 'react-toastify'
+import Meta from '../../components/Meta'
 import { useGetUserDetailsQuery, useUpdateUserMutation } from '../../slices/usersApiSlice'
 
 const UserEditScreen = () => {
@@ -46,6 +47,8 @@ const UserEditScreen = () => {
 
     return (
         <>
+            <Meta title={`Edit - ${name}`} />
+
             <Link className='btn btn-light my-3' to='/admin/userlist'>
                 <FaArrowLeft /> Back
             </Link>

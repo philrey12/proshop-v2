@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import CheckoutSteps from '../components/CheckoutSteps'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 import { useCreateOrderMutation } from '../slices/ordersApiSlice'
 import { clearCartItems } from '../slices/cartSlice'
 
@@ -44,6 +45,8 @@ const PlaceOrderScreen = () => {
 
     return (
         <>
+            <Meta title='Checkout' />
+
             <CheckoutSteps step1 step2 step3 step4 />
 
             <h2>Place Order</h2>

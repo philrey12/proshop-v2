@@ -5,6 +5,7 @@ import { FaTimes, FaEdit, FaTrash, FaCheck } from 'react-icons/fa'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { toast } from 'react-toastify'
+import Meta from '../../components/Meta'
 import { useGetUsersQuery, useDeleteUserMutation } from '../../slices/usersApiSlice'
 
 const UserListScreen = () => {
@@ -24,6 +25,8 @@ const UserListScreen = () => {
 
     return (
         <>
+            <Meta title='Manage Users' />
+
             <h3>Users</h3>
 
             {loadingDelete && <Loader />}

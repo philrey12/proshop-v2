@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
 import ProductCarousel from '../components/ProductCarousel'
+import Meta from '../components/Meta'
 import { useGetProductsQuery } from '../slices/productsApiSlice'
 
 const HomeScreen = () => {
@@ -22,6 +23,8 @@ const HomeScreen = () => {
                     </Message>
                 ) : (
                     <>
+                        <Meta title='Home - ProShop v2' />
+
                         {keyword ? (
                             <h5>Search results for "{keyword}"</h5>
                         ) : (
