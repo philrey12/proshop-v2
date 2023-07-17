@@ -5,6 +5,7 @@ import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
+import ProductCarousel from '../components/ProductCarousel'
 import { useGetProductsQuery } from '../slices/productsApiSlice'
 
 const HomeScreen = () => {
@@ -22,9 +23,12 @@ const HomeScreen = () => {
                 ) : (
                     <>
                         {keyword ? (
-                            <p>Search results for "{keyword}"</p>
+                            <h5>Search results for "{keyword}"</h5>
                         ) : (
-                            <h2>Latest Products</h2>
+                            <>
+                                <ProductCarousel />
+                                <h3>Latest Products</h3>
+                            </>
                         )}
 
                         <Row>
