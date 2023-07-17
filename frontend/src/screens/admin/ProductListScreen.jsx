@@ -31,7 +31,7 @@ const ProductListScreen = () => {
         }
     }
     const addNewProductHandler = async () => {
-        if (window.confirm('Add test product?')) {
+        if (window.confirm('Add new product?')) {
             try {
                 await addNewProduct()
                 refetch()

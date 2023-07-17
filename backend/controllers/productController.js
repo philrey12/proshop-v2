@@ -39,13 +39,13 @@ const getProductById = asyncHandler(async (req, res) => {
 // @access Private/Admin
 const addNewProduct = asyncHandler(async (req, res) => {
     const product = new Product({
-        name: 'Product Name',
-        description: 'Product Description',
+        name: '[Name]',
+        description: '[Description]',
         price: 0,
         user: req.user._id,
         image: '/images/sample.jpg',
-        brand: 'Product Brand',
-        category: 'Sample',
+        brand: '[Brand]',
+        category: '[Category]',
         countInStock: 0,
         numReviews: 0
     })
