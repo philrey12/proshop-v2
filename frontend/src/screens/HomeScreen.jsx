@@ -23,7 +23,7 @@ const HomeScreen = () => {
                     </Message>
                 ) : (
                     <>
-                        <Meta title='Home - ProShop v2' />
+                        <Meta title='Home - ProShop Electronics' />
 
                         {keyword ? (
                             <h5>Search results for "{keyword}"</h5>

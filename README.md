@@ -1,4 +1,4 @@
 # proshop-v2
-MERN Stack eCommerce Application
+A MERN Stack eCommerce Application
 
 Demo: https://proshop-v2-h08t.onrender.com

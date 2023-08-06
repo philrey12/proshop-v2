@@ -46,7 +46,7 @@ const RegisterScreen = () => {
 
     return (
         <>
-            <Meta title='Register - ProShop v2' />
+            <Meta title='Register - ProShop Electronics' />
 
             <FormContainer>
                 <h2>Register</h2>

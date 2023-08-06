@@ -39,7 +39,7 @@ const LoginScreen = () => {
 
     return (
         <>
-            <Meta title='Log In - ProShop v2' />
+            <Meta title='Log In - ProShop Electronics' />
 
             <FormContainer>
                 <h2>Log In</h2>

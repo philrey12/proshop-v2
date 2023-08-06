@@ -9,7 +9,7 @@ const Footer = () => {
             <Container>
                 <Row>
                     <Col className='text-center py-3'>
-                        <p>ProShop v2 &copy; {currentYear}</p>
+                        <p>ProShop Electronics &copy; {currentYear}</p>
                         <p>Built by <a href="https://www.devphil.co/" target='_blank' rel='noreferrer' style={{ style: 'none' }}>devphil.co</a></p>
                     </Col>
                 </Row>
