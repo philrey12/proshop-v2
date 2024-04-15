@@ -11,26 +11,34 @@ const storage = multer.diskStorage({
         cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`)
     }
 })
-const upload = multer({
-    storage
-})
 
-function checkFileType(file, cb) {
-    const fileTypes = /jpg|jpeg|png/
+function fileFilter(req, file, cb) {
+    const fileTypes = /jpe?g|png|webp/
+    const mimeTypes = /image\/jpe?g|image\/png|image\/webp/
+
     const extName = fileTypes.test(path.extname(file.originalname).toLowerCase())
-    const mimeType = fileTypes.test(file.mimeType)
+    const mimeType = mimeTypes.test(file.mimeType)
 
     if (extName && mimeType) {
-        return cb(null, true)
+        cb(null, true)
     } else {
-        cb('Only images allowed')
+        cb(new Error('Unsupported file type'), false)
     }
 }
 
-router.post('/', upload.single('image'), (req, res) => {
-    res.send({
-        message: 'Image uploaded',
-        image: `/${req.file.path}`
+const upload = multer({ storage, fileFilter })
+const uploadSingleImage = upload.single('image')
+
+router.post('/', (req, res) => {
+    uploadSingleImage(req, res, function (err) {
+        if (err) {
+            res.status(400).send({ message: err.message })
+        }
+
+        res.status(200).send({
+            message: 'Image uploaded successfully',
+            image: `/${req.file.path}`
+        })
     })
 })
 

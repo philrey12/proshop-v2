@@ -12,7 +12,7 @@ import { useGetOrderDetailsQuery, usePayOrderMutation, useGetPayPalClientIdQuery
 
 const OrderScreen = () => {
     const { id: orderId } = useParams()
-    const { 
+    const {
         data: order,
         refetch,
         isLoading,
@@ -21,10 +21,10 @@ const OrderScreen = () => {
     const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation()
     const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation()
     const [{ isPending }, paypalDispatch] = usePayPalScriptReducer()
-    const { 
-        data: paypal, 
-        isLoading: loadingPayPal, 
-        error: errorPayPal 
+    const {
+        data: paypal,
+        isLoading: loadingPayPal,
+        error: errorPayPal
     } = useGetPayPalClientIdQuery()
     const { userInfo } = useSelector((state) => state.auth)
     const markAsDeliveredHandler = async () => {
@@ -100,13 +100,13 @@ const OrderScreen = () => {
     return isLoading ? (
         <Loader />
     ) : error ? (
-        <Message variant='danger' />
+        <Message variant='danger'>{error?.data?.message || error.error}</Message>
     ) : (
         <>
             <Meta title='Orders' />
 
             <h3>Order ID: {order._id}</h3>
-            
+
             <Row>
                 <Col md={8}>
                     <ListGroup variant='flush'>
@@ -170,7 +170,7 @@ const OrderScreen = () => {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                
+
                 <Col md={4}>
                     <Card>
                         <ListGroup variant='flush'>
@@ -211,7 +211,7 @@ const OrderScreen = () => {
                                     )}
                                 </ListGroup.Item>
                             )}
-                            
+
                             {loadingDeliver && <Loader />}
 
                             {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (

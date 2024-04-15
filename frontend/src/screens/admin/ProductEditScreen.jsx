@@ -8,10 +8,10 @@ import Loader from '../../components/Loader'
 import FormContainer from '../../components/FormContainer'
 import { toast } from 'react-toastify'
 import Meta from '../../components/Meta'
-import { 
-    useGetProductDetailsQuery, 
-    useUpdateProductMutation, 
-    useUploadProductImageMutation 
+import {
+    useGetProductDetailsQuery,
+    useUpdateProductMutation,
+    useUploadProductImageMutation
 } from '../../slices/productsApiSlice'
 
 const ProductEditScreen = () => {
@@ -92,81 +92,81 @@ const ProductEditScreen = () => {
                 {isLoading ? (
                     <Loader />
                 ) : error ? (
-                    <Message variant='danger'>{error}</Message>
+                    <Message variant='danger'>{error.data.message}</Message>
                 ) : (
                     <Form onSubmit={submitHandler}>
                         <Form.Group controlId='name' className='mb-3'>
                             <Form.Label>Name</Form.Label>
-                            <Form.Control 
-                                type='text' 
-                                placeholder='Enter name' 
-                                value={name} 
+                            <Form.Control
+                                type='text'
+                                placeholder='Enter name'
+                                value={name}
                                 onChange={(e) => setName(e.target.value)}
                             ></Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId='description' className='mb-3'>
                             <Form.Label>Description</Form.Label>
-                            <Form.Control 
-                                as='textarea' 
-                                rows={3} 
-                                placeholder='Enter description' 
-                                value={description} 
+                            <Form.Control
+                                as='textarea'
+                                rows={3}
+                                placeholder='Enter description'
+                                value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             ></Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId='price' className='mb-3'>
                             <Form.Label>Price</Form.Label>
-                            <Form.Control 
-                                type='number' 
-                                placeholder='Enter price' 
-                                value={price} 
+                            <Form.Control
+                                type='number'
+                                placeholder='Enter price'
+                                value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                             ></Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId='image' className='mb-3'>
                             <Form.Label>Image</Form.Label>
-                            <Form.Control 
-                                type='text' 
-                                placeholder='Enter image URL' 
-                                value={image} 
+                            <Form.Control
+                                type='text'
+                                placeholder='Enter image URL'
+                                value={image}
                                 onChange={(e) => setImage(e.target.value)}
                             ></Form.Control>
-                            <Form.Control 
-                                type='file' 
-                                label='Choose File' 
+                            <Form.Control
+                                type='file'
+                                label='Choose File'
                                 onChange={uploadFileHandler}
                             ></Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId='brand' className='mb-3'>
                             <Form.Label>Brand</Form.Label>
-                            <Form.Control 
-                                type='text' 
-                                placeholder='Enter brand' 
-                                value={brand} 
+                            <Form.Control
+                                type='text'
+                                placeholder='Enter brand'
+                                value={brand}
                                 onChange={(e) => setBrand(e.target.value)}
                             ></Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId='category' className='mb-3'>
                             <Form.Label>Category</Form.Label>
-                            <Form.Control 
-                                type='text' 
-                                placeholder='Enter category' 
-                                value={category} 
+                            <Form.Control
+                                type='text'
+                                placeholder='Enter category'
+                                value={category}
                                 onChange={(e) => setCategory(e.target.value)}
                             ></Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId='countInStock' className='mb-2'>
                             <Form.Label>Quantity</Form.Label>
-                            <Form.Control 
-                                type='number' 
-                                placeholder='Enter quantity' 
-                                value={countInStock} 
+                            <Form.Control
+                                type='number'
+                                placeholder='Enter quantity'
+                                value={countInStock}
                                 onChange={(e) => setCountInStock(e.target.value)}
                             ></Form.Control>
                         </Form.Group>

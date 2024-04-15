@@ -5,14 +5,14 @@ import { FaSearch } from 'react-icons/fa'
 import { useParams, useNavigate } from 'react-router-dom'
 
 const SearchBox = () => {
-    const navigate  = useNavigate()
+    const navigate = useNavigate()
     const { keyword: urlKeyword } = useParams()
     const [keyword, setKeyword] = useState(urlKeyword || '')
     const submitHandler = (e) => {
         e.preventDefault()
 
-        if (keyword.trim()) {
-            navigate(`/search/${keyword}`)
+        if (keyword) {
+            navigate(`/search/${keyword.trim()}`)
         } else {
             navigate('/')
         }
@@ -20,12 +20,12 @@ const SearchBox = () => {
 
     return (
         <Form onSubmit={submitHandler} className='d-flex'>
-            <Form.Control 
-                type='text' 
-                name='q' 
-                placeholder='Search...' 
-                value={keyword} 
-                onChange={(e) => setKeyword(e.target.value)} 
+            <Form.Control
+                type='text'
+                name='q'
+                placeholder='Search...'
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
                 className='mr-sm-2 ml-sm-5'
             ></Form.Control>
             <Button variant='outline-light' type='submit' title='Search' className='p-2 mx-2' style={{ width: 50 }}>

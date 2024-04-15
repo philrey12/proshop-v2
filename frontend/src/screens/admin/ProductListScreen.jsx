@@ -8,10 +8,10 @@ import Loader from '../../components/Loader'
 import Paginate from '../../components/Paginate'
 import { toast } from 'react-toastify'
 import Meta from '../../components/Meta'
-import { 
-    useGetProductsQuery, 
-    useAddNewProductMutation, 
-    useDeleteProductMutation 
+import {
+    useGetProductsQuery,
+    useAddNewProductMutation,
+    useDeleteProductMutation
 } from '../../slices/productsApiSlice'
 
 const ProductListScreen = () => {
@@ -62,7 +62,7 @@ const ProductListScreen = () => {
             {isLoading ? (
                 <Loader />
             ) : error ? (
-                <Message variant='danger'>{error}</Message>
+                <Message variant='danger'>{error.data.message}</Message>
             ) : (
                 <>
                     <Table striped hover responsive className='table-sm'>
@@ -93,11 +93,11 @@ const ProductListScreen = () => {
                                                 <FaEdit />
                                             </Button>
                                         </LinkContainer>
-                                        <Button 
-                                            variant='light' 
-                                            className='btn-sm' 
-                                            title='Delete' 
-                                            style={{color: 'red'}}
+                                        <Button
+                                            variant='light'
+                                            className='btn-sm'
+                                            title='Delete'
+                                            style={{ color: 'red' }}
                                             onClick={() => deleteProductHandler(product._id, product.name)}
                                         ><FaTrash /></Button>
                                     </td>
@@ -105,7 +105,7 @@ const ProductListScreen = () => {
                             ))}
                         </tbody>
                     </Table>
-                    
+
                     <Row>
                         <Col className='my-2'>
                             <Paginate pages={data.pages} page={data.page} isAdmin={true} />

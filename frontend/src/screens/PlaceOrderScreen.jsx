@@ -19,12 +19,12 @@ const PlaceOrderScreen = () => {
     const placeOrderHandler = async () => {
         try {
             const res = await createOrder({
-                orderItems: cart.cartItems, 
-                shippingAddress: cart.shippingAddress, 
-                paymentMethod: cart.paymentMethod, 
-                itemsPrice: cart.itemsPrice, 
-                shippingPrice: cart.shippingPrice, 
-                taxPrice: cart.taxPrice, 
+                orderItems: cart.cartItems,
+                shippingAddress: cart.shippingAddress,
+                paymentMethod: cart.paymentMethod,
+                itemsPrice: cart.itemsPrice,
+                shippingPrice: cart.shippingPrice,
+                taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice
             }).unwrap()
 
@@ -133,20 +133,20 @@ const PlaceOrderScreen = () => {
                                 </Row>
                             </ListGroup.Item>
 
-                            { error && <ListGroup.Item>
-                                <Message variant='danger'>{error}</Message>
-                            </ListGroup.Item> }
+                            {error && <ListGroup.Item>
+                                <Message variant='danger'>{error.data.message}</Message>
+                            </ListGroup.Item>}
 
                             <ListGroup.Item>
-                                <Button 
-                                    type='button' 
-                                    className='btn-block' 
-                                    disabled={cart.cartItems.length === 0} 
+                                <Button
+                                    type='button'
+                                    className='btn-block'
+                                    disabled={cart.cartItems.length === 0}
                                     onClick={placeOrderHandler}
                                 >
                                     Place Order
                                 </Button>
-                                { isLoading && <Loader /> }
+                                {isLoading && <Loader />}
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
